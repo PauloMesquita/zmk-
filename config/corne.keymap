@@ -16,12 +16,12 @@
                         timeout-ms = <50>;
                         layers = <0>;  // Restricting to the first layer (mac_base_layer)
                         key-positions = <14 22>;
-                        bindings = <&macro_output_ã>;
+                        bindings = <&macro_output_a_tilde>;
                 };
         };
 
         &macro {
-                macro_output_ã {
+                macro_output_a_tilde {
                         bindings = <
                         &kp LS(GRAVE)  // Shift + Grave
                         &kp A          // Followed by A
