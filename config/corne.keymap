@@ -9,6 +9,17 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+         macros {
+                macro_output_a_tilde: macro_output_a_tilde {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings
+                                = <&macro_tap &kp LS(GRAVE)> // SHIFT + GRAVE = ~
+                                , <&macro_tap &kp A>
+                                ;
+                };
+        };
+        
         combos {
                 compatible = "zmk,combos";
 
@@ -19,16 +30,6 @@
                         bindings = <&macro_output_a_tilde>;
                 };
         };
-
-        &macro {
-                macro_output_a_tilde {
-                        bindings = <
-                        &kp LS(GRAVE)  // Shift + Grave
-                        &kp A          // Followed by A
-                        >;
-                };
-        };
-
 
         keymap {
                 compatible = "zmk,keymap";
