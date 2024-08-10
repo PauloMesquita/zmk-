@@ -97,7 +97,7 @@
 //                               |---------------------------------------------|
 
                         bindings = <
-   &tog 2     &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT    &trans      &trans  &kp N7       &kp N8   &kp N9   &kp MINUS &kp EQUAL
+   &to 2     &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT    &trans      &trans  &kp N7       &kp N8   &kp N9   &kp MINUS &kp EQUAL
    &trans     &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT    &trans      &trans  &kp N4       &kp N5   &kp N6   &kp LBKT  &kp RBKT
    &kp LSHFT  &trans    &trans    &trans     &trans       &trans      &trans  &kp N1       &kp N2   &kp N3   &kp LPAR  &kp RPAR
                                   &trans     &bootloader  &trans      &trans  &bootloader  &kp N0
@@ -115,10 +115,10 @@
 //                           | BS_LY |     |     |   =   |     |     |     |
 //                           |---------------------------------------------|
                         bindings = <
-   &trans     &trans       &trans       &trans        &trans        &trans         &trans   &trans   &trans   &trans   &trans  &tog 0
+   &trans     &trans       &trans       &trans        &trans        &trans         &trans   &trans   &trans   &trans   &trans  &to 0
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &trans   &trans   &trans   &trans   &trans  &trans
    &kp LSHFT  &trans       &kp LEFT     &kp DOWN      &kp RIGHT     &trans         &trans   &trans   &trans   &trans   &trans  &trans
-                                        &tog 0        &trans        &trans         &trans   &trans   &trans
+                                        &to 0        &trans        &trans         &trans   &trans   &trans
 
                         >;
                 };
