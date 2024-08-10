@@ -8,48 +8,77 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+// Define layer names
+#define DEFAULT 0
+#define SYM_LAY 1
+#define FUN_LAY 2
+
 / {
+        combos {
+                compatible = "zmk,combos";
+
+                combo_delete {
+                        timeout-ms = <50>;
+                        key-positions = <12 11>;
+                        layers = <0 1>
+                        bindings = <&kp DELETE>;
+                };
+        };
+
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
-// -----------------------------------------------------------------------------------------
-// |ESC+GRAVE |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | TAB      |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT     |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &mt GRAVE ESC &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp TAB       &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT     &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                      &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+// ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮
+// |  ESC       |  q Q       |  w W       |  e E       |  r R       |  t T       |   |  y Y       |  u U       |  i I       |  o O       |  p P       | BKSP[DEL]  |
+   &kp ESC      &kp Q        &kp W        &kp E        &kp R        &kp T            &kp Y        &kp U        &kp I        &kp O        &kp P        &kp BSPC
+// ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
+// |  L_SHFT    |  a A       |  s S       |  d D       |  f F       |  g G       |   |  h H       |  j J       |  k K       |  l L       |  ; :       |  ' "       |
+   &kp LSHFT    &kp A        &kp S        &kp D        &kp F        &kp G            &kp H        &kp J        &kp K        &kp L        &kp SEMI     &kp APOS
+// ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
+// |  L_CTRL    |  z Z       |  x X       |  c C       |  v V       |  b B       |   |  n N       |  m M       |  , <       |  . >       |  / ?       |  TAB       |
+   &kp LCTRL    &kp Z        &kp X        &kp C        &kp V        &kp B            &kp N        &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp TAB
+// ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
+//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
+                                          &kp LALT     &mo SYM_LAY  &kp SPACE        &kp ENTER    &mo FUN_LAY  &kp LGUI
+//                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
                         >;
-                };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     | RST |     |   |     | RST |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &bootloader       &trans         &trans   &bootloader   &trans &trans    &trans &trans
-                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
-                        >;
-                };
+                };      
 
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+                symbol_layer {
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp LPAR  &kp RPAR &kp ASTRK &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+// ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮
+// |  ` ~       |  1 !       |  2 @       |  3 #       |  4 $       |  5 %       |   |  6 ^       |  7 &       |  8 *       |  9 (       |  0 )       | BKSP[DEL]  |
+   &kp GRAVE    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5           &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
+// ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
+// |  L_SHFT    |            |            | CUT_MIC    |  BRT_UP    |  VOL_UP    |   |  [ {       |  (         |  {         |  - _       |  = +       |   \ |      |
+   &kp LSHFT    &none        &none        &none        &kp C_BRI_UP &kp K_VOL_UP     &kp LBKT     &kp LPAR     &kp LBRC     &kp MINUS    &kp EQUAL    &kp BSLH
+// ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
+// |  L_CTRL    |            |            | PRT_SCR    |  BRT_DW    |  VOL_DW    |   |  ] }       |  )         |  }         |  _         |  +         |   |        |
+   &kp LCTRL    &none        &none        &kp PSCRN    &kp C_BRI_DN   &kp K_VOL_DW   &kp RBKT     &kp RPAR     &kp RBRC     &kp UNDER    &kp PLUS     &kp PIPE
+// ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
+//                                        | LALT LOPT  |            |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
+                                          &kp LALT     &none        &kp SPACE        &kp ENTER    &mo FUN_LAY  &kp LGUI
+//                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
+                        >;
+                };      
+
+                functions_layer {
+                        bindings = <
+// ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮
+// |  F1        |  F2        |  F3        |  F4        |  F5        |  F6        |   |  F7        |  F8        |  F9        |  F10       |  F11       |  F12       |
+   &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6           &kp F7       &kp F8       &kp F9       &kp F10      &kp F11      &kp F12      |
+// ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
+// |  BLE_CLR   |  BLE_5     |  BLE_4     |  BLE_3     |  BLE_2     |  BLE_1     |   |  LFT       |  DNW       |  UP        |  RGT       |            |            |
+   &bt BT_SEL 5 &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1     &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none        &none 
+// ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
+// |            |            |            |  RST       |            |            |   |            |            |  RST       |            |            |            |
+   &none        &none        &none        &bootloader  &none        &none            &none        &none        &bootloader  &none        &none        &none 
+// ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
+//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |            |  META      |
+                                          &kp LALT     &mo SYM_LAY  &kp SPACE        &kp ENTER    &none        &kp LGUI
+//                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
                         >;
                 };
         };
