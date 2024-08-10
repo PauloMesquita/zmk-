@@ -18,6 +18,24 @@
                                 , <&macro_tap &kp A>
                                 ;
                 };
+
+                macro_output_o_tilde: macro_output_o_tilde {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings
+                                = <&macro_tap &kp LS(GRAVE)> // SHIFT + GRAVE = ~
+                                , <&macro_tap &kp O>
+                                ;
+                };
+
+                macro_output_n_tilde: macro_output_n_tilde {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings
+                                = <&macro_tap &kp LS(GRAVE)> // SHIFT + GRAVE = ~
+                                , <&macro_tap &kp N>
+                                ;
+                };
         };
 
         combos {
@@ -28,6 +46,20 @@
                         layers = <0>;  // Restricting to the first layer (mac_base_layer)
                         key-positions = <13 22>; // a + ;
                         bindings = <&macro_output_a_tilde>;
+                };
+
+                combo_o_semicolon {
+                        timeout-ms = <50>;
+                        layers = <0>;  // Restricting to the first layer (mac_base_layer)
+                        key-positions = <9 22>; // o + ;
+                        bindings = <&macro_output_o_tilde>;
+                };
+
+                combo_n_semicolon {
+                        timeout-ms = <50>;
+                        layers = <0>;  // Restricting to the first layer (mac_base_layer)
+                        key-positions = <30 22>; // n + ;
+                        bindings = <&macro_output_n_tilde>;
                 };
         };
 
