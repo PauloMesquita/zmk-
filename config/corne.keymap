@@ -25,6 +25,16 @@
          };
       };
 
+
+   behaviors {
+        td0: td_shift_caps{
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LSHFT>, <&kp CAPSLOCK>;
+        };
+    };
+
    keymap {
       compatible = "zmk,keymap";
 
@@ -34,8 +44,8 @@
 // |  ESC       |  q Q       |  w W       |  e E       |  r R       |  t T       |   |  y Y       |  u U       |  i I       |  o O       |  p P       | BKSP[DEL]  |
    &kp ESC      &kp Q        &kp W        &kp E        &kp R        &kp T            &kp Y        &kp U        &kp I        &kp O        &kp P        &kp BSPC
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
-// |  L_SHFT    |  a A       |  s S       |  d D       |  f F       |  g G       |   |  h H       |  j J       |  k K       |  l L       |  ; :       |  ' "       |
-   &kp LSHFT    &kp A        &kp S        &kp D        &kp F        &kp G            &kp H        &kp J        &kp K        &kp L        &kp SEMI     &kp APOS
+// |L_SHFT CAPS |  a A       |  s S       |  d D       |  f F       |  g G       |   |  h H       |  j J       |  k K       |  l L       |  ; :       |  ' "       |
+   &td0         &kp A        &kp S        &kp D        &kp F        &kp G            &kp H        &kp J        &kp K        &kp L        &kp SEMI     &kp APOS
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
 // |  L_CTRL    |  z Z       |  x X       |  c C       |  v V       |  b B       |   |  n N       |  m M       |  , <       |  . >       |  / ?       |  TAB       |
    &kp LCTRL    &kp Z        &kp X        &kp C        &kp V        &kp B            &kp N        &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp TAB
@@ -52,8 +62,8 @@
 // |  ` ~       |  1 !       |  2 @       |  3 #       |  4 $       |  5 %       |   |  6 ^       |  7 &       |  8 *       |  9 (       |  0 )       | BKSP[DEL]  |
    &kp GRAVE    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5           &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
-// |  L_SHFT    |            |            | CUT_MIC    |  BRT_UP    |  VOL_UP    |   |  [ {       |  (         |  {         |  - _       |  = +       |   \ |      |
-   &kp LSHFT    &none        &none        &none        &kp C_BRI_UP &kp K_VOL_UP     &kp LBKT     &kp LPAR     &kp LBRC     &kp MINUS    &kp EQUAL    &kp BSLH
+// |L_SHFT CAPS |            |            | CUT_MIC    |  BRT_UP    |  VOL_UP    |   |  [ {       |  (         |  {         |  - _       |  = +       |   \ |      |
+   &td0         &none        &none        &none        &kp C_BRI_UP &kp K_VOL_UP     &kp LBKT     &kp LPAR     &kp LBRC     &kp MINUS    &kp EQUAL    &kp BSLH
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
 // |  L_CTRL    |            |            | PRT_SCR    |  BRT_DW    |  VOL_DW    |   |  ] }       |  )         |  }         |  _         |  +         |   |        |
    &kp LCTRL    &none        &none        &kp PSCRN    &kp C_BRI_DN   &kp K_VOL_DN   &kp RBKT     &kp RPAR     &kp RBRC     &kp UNDER    &kp PLUS     &kp PIPE
@@ -70,8 +80,8 @@
 // |  F1        |  F2        |  F3        |  F4        |  F5        |  F6        |   |  F7        |  F8        |  F9        |  F10       |  F11       |  F12       |
    &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6           &kp F7       &kp F8       &kp F9       &kp F10      &kp F11      &kp F12      
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
-// |  BLE_CLR   |  BLE_5     |  BLE_4     |  BLE_3     |  BLE_2     |  BLE_1     |   |  LFT       |  DNW       |  UP        |  RGT       |            |            |
-   &bt BT_SEL 5 &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1     &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none        &none 
+// |L_SHFT CAPS |  BLE_5     |  BLE_4     |  BLE_3     |  BLE_2     |  BLE_1     |   |  LFT       |  DNW       |  UP        |  RGT       |            |  BLE_CLR   |
+   &td0         &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1     &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none        &bt BT_CLR
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
 // |            |            |            |  RST       |            |            |   |            |            |  RST       |            |            |            |
    &none        &none        &none        &bootloader  &none        &none            &none        &none        &bootloader  &none        &none        &none 
