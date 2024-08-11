@@ -57,7 +57,7 @@
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
 // |  L_CTRL    |            |            | PRT_SCR    |  BRT_DW    |  VOL_DW    |   |  ] }       |  )         |  }         |  _         |  +         |   |        |
 // &kp LCTRL    &none        &none        &kp PSCRN    &kp C_BRI_DN   &kp K_VOL_DW   &kp RBKT     &kp RPAR     &kp RBRC     &kp UNDER    &kp PLUS     &kp PIPE
-   &kp LCTRL    &none        &none        &kp PSCRN    &kp C_BRI_DN   &kp K_VOL_DW   &kp RBKT     &trans       &trans       &trans       &trans       &trans       
+   &trans       &trans       &trans       &trans       &trans       &trans           &trans       &trans       &trans       &trans       &trans       &trans       
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
 //                                        | LALT LOPT  |            |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
                                           &kp LALT     &none        &kp SPACE        &kp ENTER    &mo FUN_LAY  &kp LGUI
