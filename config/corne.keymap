@@ -55,8 +55,9 @@
 // |  L_SHFT    |            |            | CUT_MIC    |  BRT_UP    |  VOL_UP    |   |  [ {       |  (         |  {         |  - _       |  = +       |   \ |      |
    &kp LSHFT    &none        &none        &none        &kp C_BRI_UP &kp K_VOL_UP     &kp LBKT     &kp LPAR     &kp LBRC     &kp MINUS    &kp EQUAL    &kp BSLH
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
-// |  L_CTRL    |            |            | PRT_SCR    |  BRT_DW    |  VOL_DW    |   |  ] }       |  )         |  } RBRC        |  _  UNDER       |  +  PLUS       |   |   PIPE     |
-   &kp LCTRL    &none        &none        &kp PSCRN    &kp C_BRI_DN   &kp K_VOL_DW   &kp RBKT     &kp RPAR     &none     &none     &none     &none
+// |  L_CTRL    |            |            | PRT_SCR    |  BRT_DW    |  VOL_DW    |   |  ] }       |  )         |  }         |  _         |  +         |   |        |
+// &kp LCTRL    &none        &none        &kp PSCRN    &kp C_BRI_DN   &kp K_VOL_DW   &kp RBKT     &kp RPAR     &kp RBRC     &kp UNDER    &kp PLUS     &kp PIPE
+   &kp LCTRL    &none        &none        &kp PSCRN    &kp C_BRI_DN   &kp K_VOL_DW   &kp RBKT     &trans       &trans       &trans       &trans       &trans       
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
 //                                        | LALT LOPT  |            |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
                                           &kp LALT     &none        &kp SPACE        &kp ENTER    &mo FUN_LAY  &kp LGUI
