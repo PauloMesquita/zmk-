@@ -23,7 +23,7 @@
          bindings = <&kp DELETE>;
       };
 
-      combo_delete {
+      combo_delete_tst {
          timeout-ms = <50>;
          key-positions = <0 1>;
          bindings = <&kp DELETE>;
