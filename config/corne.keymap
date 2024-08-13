@@ -12,7 +12,7 @@
 #define DEFAULT 0
 #define SYM_LAY 1
 #define FUN_LAY 2
-#define BLE_LAY 3
+#define SYS_LAY 3
 
 / {
     behaviors {
@@ -35,9 +35,9 @@
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
-        tri_layer {
+        sys_layer {
             if-layers = <SYM_LAY FUN_LAY>;
-            then-layer = <BLE_LAY>;
+            then-layer = <SYS_LAY>;
         };
     };
 
@@ -80,7 +80,7 @@
          >;
       };      
 
-      functions_layer {
+      function_layer {
          bindings = <
 // ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮
 // |  F1        |  F2        |  F3        |  F4        |  F5        |  F6        |   |  F7        |  F8        |  F9        |  F10       |  F11       |  F12       |
@@ -98,14 +98,14 @@
          >;
       };
 
-      ble_layer {
+      sys_layer {
          bindings = <
 // ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮
 // |            |            |            |            |            |            |   |            |            |            |            |            |            |
    &none        &none        &none        &none        &none        &none            &none        &none        &none        &none        &none        &none 
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
-// |L_SHFT CAPS |  BLE_5     |  BLE_4     |  BLE_3     |  BLE_2     |  BLE_1     |   |  BLE_CLR   |            |            |            |            |            |
-   &none         &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1     &bt BT_CLR  &kp DOWN     &kp UP       &kp RIGHT    &none        &bt BT_CLR
+// |            |  BLE_5     |  BLE_4     |  BLE_3     |  BLE_2     |  BLE_1     |   |  BLE_CLR   |            |            |            |            | BT_CLR_ALL |
+   &none         &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1     &bt BT_CLR  &none        &none        &none        &none        &bt BT_CLR_ALL
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
 // |            |            |            |  RST       |            |            |   |            |            |  RST       |            |            |            |
    &none        &none        &none        &bootloader  &none        &none            &none        &none        &bootloader  &none        &none        &none 
