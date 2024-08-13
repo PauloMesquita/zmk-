@@ -12,9 +12,10 @@
 #define DEFAULT 0
 #define SYM_LAY 1
 #define FUN_LAY 2
+#define BLE_LAY 3
 
 / {
-   behaviors {
+    behaviors {
       /* Tap-Dance */
       shftCps: shift_to_caps { // 1-tap the LSHFT key for LSHFT functionality. 2-tap the LSHFT key for CAPSLOCK functionality
         compatible = "zmk,behavior-tap-dance";
@@ -30,6 +31,14 @@
         bindings = <&kp BACKSPACE>, <&kp DELETE>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
       };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <SYM_LAY FUN_LAY>;
+            then-layer = <BLE_LAY>;
+        };
     };
 
     keymap {
@@ -77,14 +86,32 @@
 // |  F1        |  F2        |  F3        |  F4        |  F5        |  F6        |   |  F7        |  F8        |  F9        |  F10       |  F11       |  F12       |
    &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6           &kp F7       &kp F8       &kp F9       &kp F10      &kp F11      &kp F12      
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
-// |L_SHFT CAPS |  BLE_5     |  BLE_4     |  BLE_3     |  BLE_2     |  BLE_1     |   |  LFT       |  DNW       |  UP        |  RGT       |            |  BLE_CLR   |
-   &shftCps         &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1     &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none        &bt BT_CLR
+// |L_SHFT CAPS |            |            |            |            |            |   |  LFT       |  DNW       |  UP        |  RGT       |            |            |
+   &shftCps     &none        &none        &none        &none        &none            &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none        &none
+// ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
+// |            |            |            |            |            |            |   |            |            |            |            |            |            |
+   &none        &none        &none        &none        &none        &none            &none        &none        &none        &none        &none        &none 
+// ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
+//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |            |  META      |
+                                          &kp LALT     &mo SYM_LAY  &kp SPACE        &kp ENTER    &none        &kp LGUI
+//                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
+         >;
+      };
+
+      ble_layer {
+         bindings = <
+// ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────┬────────────╮
+// |            |            |            |            |            |            |   |            |            |            |            |            |            |
+   &none        &none        &none        &none        &none        &none            &none        &none        &none        &none        &none        &none 
+// ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
+// |L_SHFT CAPS |  BLE_5     |  BLE_4     |  BLE_3     |  BLE_2     |  BLE_1     |   |  BLE_CLR   |            |            |            |            |            |
+   &none         &bt BT_SEL 5 &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1     &bt BT_CLR  &kp DOWN     &kp UP       &kp RIGHT    &none        &bt BT_CLR
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
 // |            |            |            |  RST       |            |            |   |            |            |  RST       |            |            |            |
    &none        &none        &none        &bootloader  &none        &none            &none        &none        &bootloader  &none        &none        &none 
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
-//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |            |  META      |
-                                          &kp LALT     &mo SYM_LAY  &kp SPACE        &kp ENTER    &none        &kp LGUI
+//                                        | LALT LOPT  |            |  SPC       |   |  ENT       |            |  META      |
+                                          &kp LALT     &none        &kp SPACE        &kp ENTER    &none        &kp LGUI
 //                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
          >;
       };
