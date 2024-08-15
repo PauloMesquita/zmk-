@@ -68,11 +68,11 @@
 // |  ` ~       |  1 !       |  2 @       |  3 #       |  4 $       |  5 %       |   |  6 ^       |  7 &       |  8 *       |  9 (       |  0 )       | BKSP[DEL]  |
    &kp GRAVE    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5           &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &bckspDel
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
-// |L_SHFT CAPS |            |            | CUT_MIC    |  BRT_UP    |  VOL_UP    |   |  [ {       |  (         |  {         |  - _       |  = +       |   \ |      |
-   &shftCps         &none        &none        &none        &kp C_BRI_UP &kp K_VOL_UP     &kp LBKT     &kp LPAR     &kp LBRC     &kp MINUS    &kp EQUAL    &kp BSLH
+// |L_SHFT CAPS |            |            | CUT_MIC    |  VOL_UP    |  BRT_UP    |   |  [ {       |  (         |  {         |  - _       |  = +       |   \ |      |
+   &shftCps     &none        &none        &none        &kp K_VOL_UP &kp C_BRI_UP     &kp LBKT     &kp LPAR     &kp LBRC     &kp MINUS    &kp EQUAL    &kp BSLH
 // ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┼────────────┤
-// |  L_CTRL    |            |            | PRT_SCR    |  BRT_DW    |  VOL_DW    |   |  ] }       |  )         |  }         |  _         |  +         |   |        |
-   &kp LCTRL    &none        &none        &kp PSCRN    &kp C_BRI_DN   &kp K_VOL_DN   &kp RBKT     &kp RPAR     &kp RBRC     &kp UNDER    &kp PLUS     &kp PIPE
+// |  L_CTRL    |            |            | PRT_SCR    |  VOL_DW    |  BRT_DW    |   |  ] }       |  )         |  }         |  _         |  +         |   |        |
+   &kp LCTRL    &none        &none        &kp PSCRN    &kp K_VOL_DN &kp C_BRI_DN     &kp RBKT     &kp RPAR     &kp RBRC     &kp UNDER    &kp PLUS     &kp PIPE
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
 //                                        | LALT LOPT  |            |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
                                           &kp LALT     &none        &kp SPACE        &kp ENTER    &mo FUN_LAY  &kp LGUI
