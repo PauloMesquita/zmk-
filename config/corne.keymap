@@ -9,118 +9,105 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-        macros {
-                macro_output_a_tilde: macro_output_a_tilde {
-                        compatible = "zmk,behavior-macro";
-                        #binding-cells = <0>;
-                        bindings
-                                = <&macro_tap &kp LS(GRAVE)> // SHIFT + GRAVE = ~
-                                , <&macro_tap &kp A>
-                                ;
-                };
-
-                macro_output_o_tilde: macro_output_o_tilde {
-                        compatible = "zmk,behavior-macro";
-                        #binding-cells = <0>;
-                        bindings
-                                = <&macro_tap &kp LS(GRAVE)> // SHIFT + GRAVE = ~
-                                , <&macro_tap &kp O>
-                                ;
-                };
-
-                macro_output_n_tilde: macro_output_n_tilde {
-                        compatible = "zmk,behavior-macro";
-                        #binding-cells = <0>;
-                        bindings
-                                = <&macro_tap &kp LS(GRAVE)> // SHIFT + GRAVE = ~
-                                , <&macro_tap &kp N>
-                                ;
-                };
-        };
-
-        combos {
-                compatible = "zmk,combos";
-
-                combo_a_semicolon {
-                        timeout-ms = <50>;
-                        layers = <0>;  // Restricting to the first layer (mac_base_layer)
-                        key-positions = <13 22>; // a + ;
-                        bindings = <&macro_output_a_tilde>;
-                };
-
-                combo_o_semicolon {
-                        timeout-ms = <50>;
-                        layers = <0>;  // Restricting to the first layer (mac_base_layer)
-                        key-positions = <9 22>; // o + ;
-                        bindings = <&macro_output_o_tilde>;
-                };
-
-                combo_n_semicolon {
-                        timeout-ms = <50>;
-                        layers = <0>;  // Restricting to the first layer (mac_base_layer)
-                        key-positions = <30 22>; // n + ;
-                        bindings = <&macro_output_n_tilde>;
-                };
-        };
-
         keymap {
                 compatible = "zmk,keymap";
 
                 mac_base_layer {
-//      |----------------------------------------------------------------       ------------------------------------------------------|
-//      |    ESC   |    Q    |    W    |    E     |    R     |    T     |       |  Y  |     U     |    I    |    O    |    P   |  (   |
-//      |----------------------------------------------------------------       ------------------------------------------------------|
-//      |    TAB   |  A+CMD  |  S+OPT  |  D+CTRL  |  F+SHFT  |    G     |       |  H  |   J+SHFT  |  K+CTRL |  L+OPT  |  ;+CMD |  '   |
-//      |----------------------------------------------------------------       ------------------------------------------------------|
-//      |     \    |    Z    |    X    |     C    |    V     |    B     |       |  N  |     M     |    ,    |    .    |    /   |  [   |
-//      |----------------------------------------------------------------       ------------------------------------------------------|
-//                                     |   BKSPC  |     -    |  = + L1  |       | ENT |   GRAVE   |   SPC   |
-//                                     |---------------------------------       ----------------------------|
-
                         bindings = <
-   &kp ESC        &kp Q       &kp W       &kp E        &kp R          &kp T           &kp Y     &kp U         &kp I         &kp O        &kp P          &kp LPAR
-   &kp TAB        &mt LGUI A  &mt LALT S  &mt LCTRL D  &mt LSHFT F    &kp G           &kp H     &mt RSHFT J   &mt RCTRL K   &mt RALT L   &mt RGUI SEMI  &kp SQT
-   &kp BACKSLASH  &kp Z       &kp X       &kp C        &kp V          &kp B           &kp N     &kp M         &kp COMMA     &kp DOT      &kp FSLH       &kp LBKT
-                                          &kp BSPC     &kp MINUS      &lt 1 EQUAL     &kp RET   &kp GRAVE     &kp SPACE
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |    ESC   |    Q    |    W    |    E     |    R     |    T     |       |   Y   |     U     |    I    |    O    |    P   |   ` ~    |
+      &kp ESC    &kp Q     &kp W     &kp E      &kp R       &kp T            &kp Y     &kp U       &kp I    &kp O     &kp P   &kp GRAVE
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |   SHFT   |    A    |    S    |     D    |     F    |    G     |       |   H   |      J    |     K   |    L    |   ; :  |   ' "    |
+     &kp LSHFT    &kp A     &kp S     &kp D      &kp F      &kp G             &kp H     &kp J      &kp K     &kp L  &kp SEMI  &kp SQT
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |   CTRL   |    Z    |    X    |     C    |    V     |    B     |       |   N   |     M     |   , <   |   . >   |   / ?  |   \ |    |
+     &kp LCTRL   &kp Z     &kp X     &kp C      &kp V      &kp B             &kp N     &kp M    &kp COMMA  &kp DOT  &kp FSLH  &kp BSLH
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+//                                |  ALT OPT |  GUI CMD |   N_LY   |       |  ENTR | BACKSPACE |   SPC   |
+                                    &kp LALT   &kp LGUI    &mo 1            &kp RET   &kp BSPC  &kp SPACE
+//                                |---------------------------------       ------------------------------|
                         >;
                 };
 
-                number_and_symbols_layer {
-//      |---------------------------------------------       ------------------------------------|
-//      | BT_RS_LY |  <   |   v  |  ^   |  >   |     |       |     |  7  |  8  |  9  |  -  |  =  |
-//      |---------------------------------------------       ------------------------------------|
-//      |          |  CMD |  OPT | CTRL | SHFT |     |       |     |  4  |  5  |  6  |  [  |  ]  |
-//      |---------------------------------------------       ------------------------------------|
-//      |          |      |      |      |      |     |       |     |  1  |  2  |  3  |  (  |  )  |
-//      |---------------------------------------------       ------------------------------------|
-//                               |      |  RST |     |       |     | RST |  0  |
-//                               |--------------------       ------------------|
 
+                number_and_symbols_layer {
                         bindings = <
-   &to 2     &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT    &trans      &trans  &kp N7       &kp N8   &kp N9   &kp MINUS &kp EQUAL
-   &trans     &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT    &trans      &trans  &kp N4       &kp N5   &kp N6   &kp LBKT  &kp RBKT
-   &kp LSHFT  &trans    &trans    &trans     &trans       &trans      &trans  &kp N1       &kp N2   &kp N3   &kp LPAR  &kp RPAR
-                                  &trans     &bootloader  &trans      &trans  &bootloader  &kp N0
+// |-----------------------------------------------------------------       --------------------------------------------------------------|
+// |    TAB   |     <    |     v    |    ^    |     >     | PRTSCRN |       |    .    |    7 &    |   8 *   |   9 (   |    -    |    =    |
+     &kp TAB    &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT  &kp PSCRN         &kp DOT     &kp N7     &kp N8    &kp N9   &kp MINUS &kp EQUAL
+// |-----------------------------------------------------------------       --------------------------------------------------------------|
+// |   SHFT   |     <    |     v    |    ^    |     >     |         |       |    ,    |    4 $    |   5 %   |   6 ^   |    [    |    ]    |
+    &kp LSHFT   &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT    &none           &kp COMMA   &kp N4      &kp N5   &kp N6   &kp LBKT  &kp RBKT
+// |-----------------------------------------------------------------       --------------------------------------------------------------|
+// |   CTRL   | BLTH_LY  | CRZY_LY  |         |           |         |       |   0 )   |   1  !    |  2  @   |   3 #   |    (    |    )    |
+    &kp LCTRL    &to 2      &to 3      &none      &none      &none           &kp N0     &kp N1     &kp N2    &kp N3    &kp LPAR  &kp RPAR
+// |-----------------------------------------------------------------       --------------------------------------------------------------|
+//                                |  ALT OPT |  GUI CMD |           |       |   ENTR  | BACKSPACE |   SPC   |
+                                    &kp LALT   &kp LGUI      &none            &kp RET   &kp BSPC   &kp SPACE
+//                                |----------------------------------       --------------------------------|
                         >;
+
                 };
 
                 bluetooth_and_reset_layer {
-//      |-----------------------------------------       --------------------------------------|
-//      |        |     |     |       |     |     |       |     |     |     |     |     | BS_LY |
-//      |-----------------------------------------       --------------------------------------|
-//      | BT_CLR | BT0 | BT1 |  BT2  | BT3 | BT4 |       |     |     |     |     |     |       |
-//      |-----------------------------------------       --------------------------------------|
-//      |        |     |     |       |     |     |       |     |     |     |     |     |       |
-//      |-----------------------------------------       --------------------------------------|
-//                           | BS_LY |     |     |       |     |     |     |
-//                           |--------------------       ------------------|
                         bindings = <
-   &trans     &trans       &trans       &trans        &trans        &trans         &trans   &trans   &trans   &trans   &trans  &to 0
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &trans   &trans   &trans   &trans   &trans  &trans
-   &kp LSHFT  &trans       &kp LEFT     &kp DOWN      &kp RIGHT     &trans         &trans   &trans   &trans   &trans   &trans  &trans
-                                        &to 0        &trans        &trans         &trans   &trans   &trans
+// |----------------------------------------------------------------------------------------        --------------------------------------------------------------|
+// |            |              |              |              |              |              |        |         |         |         |         |         |           |
+       &none         &none         &none          &none         &none           &none                  &none    &none      &none     &none    &none       &none
+// |----------------------------------------------------------------------------------------        --------------------------------------------------------------|
+// |   BT_CLR   |      BT0     |      BT1     |      BT2     |      BT3     |      BT4     |        |         |         |         |         |         |           |
+     &bt BT_CLR   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4             &none    &none      &none     &none     &none     &none
+// |----------------------------------------------------------------------------------------        --------------------------------------------------------------|
+// |   BS_LY    |              |              |              |              |              |        |         |         |         |         |         |  BS_LY    |
+       &to 0         &none         &none         &none            &none         &none                 &none    &none      &none     &none     &none     &to 0
+// |----------------------------------------------------------------------------------------        --------------------------------------------------------------|
+//                                            |      RST     |              |              |        |         |         |     RST    |
+                                                 &bootloader       &none         &none                 &none      &none  &bootloader
+//                                            |---------------------------------------------        ---------------------------------|
 
                         >;
                 };
+
+
+
+
+
+
+
+// Everything after this is pure crazyness
+
+
+
+                crazy_test_layer_1 {
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |  BCKSPC  |    Q    |    W    |    E     |    R     |    T     |       |       |           |         |         |        |   BS_LY  |
+     &kp BSPC    &kp Q     &kp W     &kp E      &kp R       &kp T           &none     &none       &none     &none     &none     &to 0
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |   SHFT   |    A    |    S    |     D    |     F    |    G     |       |       |           |         |         |        |          |
+     &kp LSHFT   &kp A     &kp S     &kp D       &kp F      &kp G           &none     &none       &none     &none     &none     &none
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |   CTRL   |    Z    |    X    |     C    |    V     |    B     |       |       |           |         |         |        |          |
+     &kp LCTRL   &kp Z     &kp X     &kp C      &kp V      &kp B            &none     &none       &none     &none     &none     &none
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+//                                |  ALT OPT |  GUI CMD |    L2    |       |       |           |         |
+                                    &kp LALT   &kp LGUI    &mo 4            &none     &none       &none   
+//                                |---------------------------------       ------------------------------|
+                }
+                crazy_test_layer_2 {
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |  BCKSPC  |    Y    |    U    |    I     |    O     |    P     |       |       |           |         |         |        |          |
+     &kp BSPC    &kp Y     &kp U     &kp I      &kp O       &kp P           &none     &none       &none     &none     &none     &none
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |   SHFT   |    H    |    J    |     K    |     L    |   '  "   |       |       |           |         |         |        |          |
+     &kp LSHFT   &kp H     &kp J     &kp K      &kp L     &kp SQT           &none     &none       &none     &none     &none     &none
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+// |   CTRL   |    N    |    M    |     ,    |    .     |   /  ?   |       |       |           |         |         |        |          |
+     &kp LCTRL   &kp N     &kp M    &kp COMMA   &kp DOT   &kp FSLH           &none     &none       &none     &none     &none     &none
+// |----------------------------------------------------------------       ------------------------------------------------------------|
+//                                |  ALT OPT |  GUI CMD |          |       |       |           |         |
+                                    &kp LALT   &kp LGUI    &none            &none     &none       &none   
+//                                |---------------------------------       ------------------------------|
+                }
         };
 };
