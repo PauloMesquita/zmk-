@@ -61,8 +61,8 @@
 // |  L_CTRL    |  z Z       |  x X       |  c C       |  v V       |  b B       |   |  n N       |  m M       |  , <       |  . >       |  / ?       |  TAB       |
    &kp LCTRL    &kp Z        &kp X        &kp C        &kp V        &kp B            &kp N        &kp M        &kp COMMA    &kp DOT      &kp SLASH    &kp TAB
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
-//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
-                                          &kp LALT     &mo SYM_LAY  &kp SPACE        &kp ENTER    &mo FUN_LAY  &kp LGUI
+//                                        |  META      |  SYM_LAY   |  SPC       |   |  ENT       |  FUN_LAY   | LALT LOPT  |
+                                          &kp LGUI     &mo SYM_LAY  &kp SPACE        &kp ENTER    &mo FUN_LAY  &kp LALT
 //                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
          >;
       }; 
@@ -79,8 +79,8 @@
 // |  L_CTRL    |            |            |  ç Ç       |  VOL_DW    |  BRT_DW    |   |  ] }       |  )         |  }         |  _         |  +         |   |        |
    &kp LCTRL    &none        &none       &pt_c_cedilla &kp K_VOL_DN &kp C_BRI_DN     &kp RBKT     &kp RPAR     &kp RBRC     &kp UNDER    &kp PLUS     &kp PIPE
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
-//                                        | LALT LOPT  |            |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
-                                          &kp LALT     &none        &kp SPACE        &kp ENTER    &mo FUN_LAY  &kp LGUI
+//                                        |  META      |  SYM_LAY   |  SPC       |   |  ENT       |  FUN_LAY   | LALT LOPT  |
+                                          &trans       &trans       &trans           &trans       &trans       &trans
 //                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
          >;
       };      
@@ -97,8 +97,8 @@
 // |            |            |            |            |            |            |   |            |            |            |            |            |            |
    &none        &none        &none        &none        &none        &none            &none        &none        &none        &none        &none        &none 
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
-//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |            |  META      |
-                                          &kp LALT     &mo SYM_LAY  &kp SPACE        &kp ENTER    &none        &kp LGUI
+//                                        |  META      |  SYM_LAY   |  SPC       |   |  ENT       |  FUN_LAY   | LALT LOPT  |
+                                          &trans       &trans       &trans           &trans       &trans       &trans
 //                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
          >;
       };
@@ -115,8 +115,8 @@
 // |            |            |            |  RST       |            |            |   |            |            |  RST       |            |            |            |
    &none        &none        &none        &bootloader  &none        &none            &none        &none        &bootloader  &none        &none        &none 
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
-//                                        | LALT LOPT  |            |  SPC       |   |  ENT       |            |  META      |
-                                          &kp LALT     &none        &kp SPACE        &kp ENTER    &none        &kp LGUI
+//                                        |  META      |  SYM_LAY   |  SPC       |   |  ENT       |  FUN_LAY   | LALT LOPT  |
+                                          &trans       &trans       &trans           &trans       &trans       &trans
 //                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
          >;
       };
