@@ -79,7 +79,7 @@
 // |  L_CTRL    |            |            |  ç Ç       |  VOL_DW    |  BRT_DW    |   |  ] }       |  )         |  }         |  _         |  +         |   |        |
    &kp LCTRL    &none        &none       &pt_c_cedilla &kp K_VOL_DN &kp C_BRI_DN     &kp RBKT     &kp RPAR     &kp RBRC     &kp UNDER    &kp PLUS     &kp PIPE
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
-//                                        | LALT LOPT  |            |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
+//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
                                           &trans       &trans       &trans           &trans       &trans       &trans
 //                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
          >;
@@ -97,7 +97,7 @@
 // |            |            |            |            |            |            |   |            |            |            |            |            |            |
    &none        &none        &none        &none        &none        &none            &none        &none        &none        &none        &none        &none 
 // ╰────────────┴────────────┴────────────┴────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┴────────────┴────────────┴────────────╯
-//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |            |  META      |
+//                                        | LALT LOPT  |  SYM_LAY   |  SPC       |   |  ENT       |  FUN_LAY   |  META      |
                                           &trans       &trans       &trans           &trans       &trans       &trans
 //                                        ╰────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────╯
          >;
